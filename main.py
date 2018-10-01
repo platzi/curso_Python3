@@ -1,4 +1,4 @@
-VALID_COMMANDS = 'C,L,U,D'
+VALID_COMMANDS = 'C,L,U,D,S'
 
 
 clients = 'tomas,juan,'
@@ -38,6 +38,16 @@ def delete_client():
     _delete_client(client_name)
 
 
+def search_client(client_name):
+    clients_list = clients.split(',')
+
+    for client in clients_list:
+        if client_name != client:
+            continue
+        else:
+            return True
+
+
 def _delete_client(client_name):
     global clients
 
@@ -68,6 +78,7 @@ def _print_welcome():
     print('[L]ist clients')
     print('[U]pdate client')
     print('[D]elete client')
+    print('[S]earch client')
 
 
 def _show_clients_and_execute_command(command):
@@ -100,6 +111,14 @@ if __name__ == '__main__':
         _show_clients_and_execute_command(update_client)
     elif command == 'D':
         _show_clients_and_execute_command(delete_client)
+    elif command == 'S':
+        client_name = _get_client_name()
+        found = search_client(client_name)
+
+        if found:
+            print('The client is in the client\'s list')
+        else:
+            print('The client: {} is not in our client\'s list'.format(client_name))
     else:
         print('Invalid command')
 
