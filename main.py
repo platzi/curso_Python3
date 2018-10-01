@@ -63,7 +63,12 @@ def _add_comma():
     clients += ','
 
 def _get_client_name():
-    return input('What is the client name?')
+    client_name = None
+
+    while not client_name:
+        client_name = input('What is the client name?')
+
+    return client_name
 
 
 def _print_line():
