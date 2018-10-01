@@ -1,3 +1,6 @@
+import sys
+
+
 VALID_COMMANDS = 'C,L,U,D,S'
 
 
@@ -62,11 +65,18 @@ def _add_comma():
 
     clients += ','
 
+
 def _get_client_name():
     client_name = None
 
     while not client_name:
         client_name = input('What is the client name?')
+
+        if client_name == 'exit':
+            break
+        
+    if not client_name:
+        sys.exit()
 
     return client_name
 
