@@ -1,5 +1,7 @@
 import random
 
+# mencionar el curso actual de algoritmos
+
 def binary_search(data, target, low, high):
     if low > high:
         return False
